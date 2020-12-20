@@ -1,0 +1,9 @@
+.highScoreButton {
+    float: left;
+    margin: 20px;
+}
+
+#timer {
+    float: right;
+    margin: 20px;
+}
