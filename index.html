@@ -39,11 +39,16 @@ When I click the high scores button, I want to be able to see the log of everyon
             <h1>Coding Quiz!</h1>
             <br>
         </div>
-        <section>
+        <section class="introduction">
             <h2>Hello, and welcome to the coding quiz show. The object of the game is simple, answer as many questions
                 as you can before the time runs out. If you get a question wrong, you lose 10 seconds. See how many
                 questions you can answer before you run out of time!</h2>
                 <br>
+        </section>
+        <section class="questionSection">
+            <h1>Question <span id="questionNumber">1</span></h1>
+            <!---Question Selection Section-->
+            <ul id="answerChoices"></ul>
         </section>
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-primary" id="startQuizButton" type="button">Start the Quiz!</button>
