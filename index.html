@@ -10,22 +10,50 @@ When I click the high scores button, I want to be able to see the log of everyon
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css" />
     <title>Coding Quiz!</title>
 </head>
+
 <body>
     <div class="header">
-        <div class="highScoreButton">
-            <h4>High Score List</h4>
+        <nav class="navbar navbar-light bg-light">
+            <form class="container-fluid justify-content-start">
+                <button type="button" class="btn btn-info" id="highScoreButton">High Score List</button>
+                <span class="time-remaining-text">
+                    Time Remaining:  
+                        <div id="timeRemaining">
+                            60 Seconds
+                        </div>
+                </span>
+            </form>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="titleSection">
+            <h1>Coding Quiz!</h1>
+            <br>
         </div>
-        <div id="timer">
-            <h4>Time Remaining: </h4>
-        </div>
+        <section>
+            <h2>Hello, and welcome to the coding quiz show. The object of the game is simple, answer as many questions
+                as you can before the time runs out. If you get a question wrong, you lose 10 seconds. See how many
+                questions you can answer before you run out of time!</h2>
+                <br>
+        </section>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" id="startQuizButton" type="button">Start the Quiz!</button>
+          </div>
     </div>
 
-     <script src="./script.js"></script>
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

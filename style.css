@@ -7,3 +7,20 @@
     float: right;
     margin: 20px;
 }
+
+.navbar-text {
+    float: right;
+}
+
+.time-remaining-text {
+    margin-left: 10px;
+}
+
+#timeRemaining {
+    float: right;
+    margin-left: 5px;
+}
+
+h1 {
+    text-align: center;
+}
