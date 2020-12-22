@@ -3,21 +3,51 @@ var quizStart = document.querySelector("#startQuizButton");
 var highScoreButton = document.querySelector("#highScoreButton");
 var timeRemainingEl = document.getElementById("timeRemaining");
 var answerChoices = document.querySelector("#answerChoices");
+var questionSection = document.querySelector(".questionSection");
+var introduction = document.querySelector(".introduction");
+var titleSection = document.querySelector(".titleSection");
+
+
+//Answer Button Selection Section
+var answerButton1 = document.getElementById("button1");
+var answerButton2 = document.getElementById("button2");
+var answerButton3 = document.getElementById("button3");
+var answerButton4 = document.getElementById("button4");
 
 //Global Variable Section
 var questionNumber = 0;
-var answerButtons = ["A: ", "B: ", "C: ", "D: "];
+var answerButtons = [];
+answerButtons.push(answerButton1);
+answerButtons.push(answerButton2);
+answerButtons.push(answerButton3);
+answerButtons.push(answerButton4);
+
 
 //Question Section:
+var questions = [
+  {
+    question: "Is this question 1?",
+    answers: ["Yes, Answer 1", "Definitely Not, Answer 2", "Sure! Answer 3", "All of the above! Answer 4"],
+    correctAnswer: 0,
+  },
+  {
+    question: "Is this question 2?",
+    answers: ["Yes, Answer 1", "Definitely Not, Answer 2", "Sure! Answer 3", "All of the above! Answer 4"],
+    correctAnswer: 1,
+  },
+  {
+    question: "Is this question 3?",
+    answers: ["Yes, Answer 1", "Definitely Not, Answer 2", "Sure! Answer 3", "All of the above! Answer 4"],
+    correctAnswer: 2,
+  },
+  {
+    question: "Is this question 4?",
+    answers: ["Yes, Answer 1", "Definitely Not, Answer 2", "Sure! Answer 3", "All of the above! Answer 4"],
+    correctAnswer: 3,
+  },
+]
 
-var question1 = {
-  question: "Is this question 1?",
-  answer1: "Yes, Answer 1",
-  answer2: "Definitely Not, Answer 2",
-  answer3: "Sure! Answer 3",
-  answer4: "All of the above! Answer 4"
-}
-
+questionSection.style.display = "none";
 
 //Start Timer Function:
 function startTimer() {
@@ -36,30 +66,37 @@ function startTimer() {
   }, 1000);
 }
 
-function renderQuestion() {
-  //answerChoices.innerHTML = "";
+//Hides the introduction and title section, renders question section
+function hideIntro() {
+  titleSection.style.display = "none";
+  introduction.style.display = "none";
+  quizStart.style.display = "none";
+  questionSection.style.display = "block";
+}
 
+//Question Generate Section
+function nextQuestion () {
+  if (questionNumber < questions.length) {
+    questionList();
+  } else {
+    displayHighScores();
+  }
+}
+
+function showQuestion() {
+  questionSection.textContent = questions[questionNumber].question;
   for (var i = 0; i < answerButtons.length; i++) {
-    var ansButton = answerButtons[i];
-
-    var li = document.createElement("li");
-    li.textContent = ansButton;
-    li.setAttribute("data-index", i);
-
-
-    var button = document.createElement("button");
-    button.textContent = "Complete";
-
-    li.appendChild(button);
-    answerChoices.appendChild(li);
+    answerButtons[i].textContent = questions[questionNumber].answers[i];
+    console.log(i);
   }
 }
 
 //Start Quiz Function:
 function startQuiz() {
   startTimer();
-  renderQuestion();
-  window.alert("This Worked!");
+  hideIntro();
+  showQuestion();
+  console.log("This Worked!");
   // while (i = 0, i < questionBank.length, i++) {
   // }
 };

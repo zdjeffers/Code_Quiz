@@ -24,3 +24,8 @@
 h1 {
     text-align: center;
 }
+
+button {
+    background-color: cadetblue;
+    padding: 20px;
+}
