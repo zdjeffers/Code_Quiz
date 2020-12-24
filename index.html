@@ -26,10 +26,10 @@ When I click the high scores button, I want to be able to see the log of everyon
             <form class="container-fluid justify-content-start">
                 <button type="button" class="btn btn-info" id="highScoreButton">High Score List</button>
                 <span class="time-remaining-text">
-                    Time Remaining:  
-                        <div id="timeRemaining">
-                            60 Seconds
-                        </div>
+                    Time Remaining:
+                    <div id="timeRemaining">
+                        60 Seconds
+                    </div>
                 </span>
             </form>
         </nav>
@@ -43,7 +43,7 @@ When I click the high scores button, I want to be able to see the log of everyon
             <h2>Hello, and welcome to the coding quiz show. The object of the game is simple, answer as many questions
                 as you can before the time runs out. If you get a question wrong, you lose 10 seconds. See how many
                 questions you can answer before you run out of time!</h2>
-                <br>
+            <br>
         </section>
         <section class="questionSection">
             <h2 class="askedQuestion">Question<span class="question"></span></h2>
@@ -61,10 +61,24 @@ When I click the high scores button, I want to be able to see the log of everyon
                     <button id="button4" class="btn"></button>
                 </div>
             </div>
+            <div class="answerFeedback">
+                <h2 id="answerFeedback"></h2>
+            </div>
         </section>
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-primary" id="startQuizButton" type="button">Start the Quiz!</button>
-          </div>
+        </div>
+        <section class="highScoreSection">
+            <h3>Final Score: <span id="finalScore"></span></h3>
+            <label for="userName">Enter your initials: </label>
+            <input type="text" name="userName" id="userName">
+            <button type="submit" class="submit" id="submitButton">Submit Score</button>
+        </section>
+        <section class="highScoreIndex">
+            <ul class="highScoreList">
+            </ul>
+            <button id="homeButton">Return Home</button>
+        </section>
     </div>
 
     <script src="./script.js"></script>
