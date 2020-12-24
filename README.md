@@ -17,7 +17,7 @@ In this repo, the goal was to create a functioning quiz game utilizing JavaScrip
 
 
 ### Here is the link to the deployed site:
-[ZDJ Password Generator](https://zdjeffers.github.io/Code_Quiz/index.html)
+[ZDJ Coding Quiz](https://zdjeffers.github.io/Code_Quiz/index.html)
 
 ### Final Thoughts:
 Thank you for taking the time to look at my work. If you'd like to see any of my other projects, please feel free to drop by [my GitHub Page!](https://github.com/zdjeffers)
