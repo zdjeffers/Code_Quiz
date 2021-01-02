@@ -2,7 +2,6 @@
 var quizStart = document.querySelector("#startQuizButton");
 var highScoreButton = document.querySelector("#highScoreButton");
 var timeRemainingEl = document.getElementById("timeRemaining");
-var answerChoices = document.querySelector("#answerChoices");
 var questionSection = document.querySelector(".questionSection");
 var introduction = document.querySelector(".introduction");
 var titleSection = document.querySelector(".titleSection");
@@ -12,6 +11,8 @@ var finalScore = document.getElementById("finalScore");
 var submitButton = document.getElementById("submitButton");
 var highScoresList = document.querySelector("highScoreList")
 var highScoreIndex = document.querySelector(".highScoreIndex");
+var homeButton = document.getElementById("homeButton");
+var askedQuestion = document.querySelector(".askedQuestion");
 var questionsRight = 0;
 
 
@@ -23,11 +24,8 @@ var answerButton4 = document.getElementById("button4");
 
 //Global Variable Section
 var questionNumber = 0;
-var answerButtons = [];
-answerButtons.push(answerButton1);
-answerButtons.push(answerButton2);
-answerButtons.push(answerButton3);
-answerButtons.push(answerButton4);
+var answerButtons = [answerButton1, answerButton2, answerButton3, answerButton4];
+
 
 
 //Question Section:
@@ -75,9 +73,11 @@ function startTimer() {
     } else if (timeRemaining === 1) {
       timeRemainingEl.textContent = timeRemaining + ' second remaining';
       timeRemaining--;
-    } else {
+    } else if (questionNumber = questionNumber.length) {}
+    else {
       timeRemainingEl.textContent = '';
       clearInterval(timeInterval);
+      enterHighScore();
     }
   }, 1000);
 }
@@ -95,6 +95,7 @@ function nextQuestion() {
   if (questionNumber < questions.length) {
     showQuestion();
   } else {
+    timeRemainingEl.textContent = '';
     enterHighScore();
   }
 }
@@ -102,19 +103,16 @@ function nextQuestion() {
 
 //Show the question
 function showQuestion() {
-  questionSection.textContent = questions[questionNumber].question;
+  askedQuestion.textContent = questions[questionNumber].question;
   for (var i = 0; i < answerButtons.length; i++) {
     answerButtons[i].textContent = questions[questionNumber].answers[i];
-    console.log(i);
-    console.log(questions[questionNumber].question)
-    console.log(answerButtons[i].textContent);
   }
 };
 
 function checkAnswer(selection) {
   var correct = questions[questionNumber].correctAnswer;
-  if (selection === correct) {
-    questionsRight.textContent += 1;
+  if (selection === correct) { 
+    questionsRight += 1;
     var choice = document.getElementById("answerFeedback");
     var displayText = document.createTextNode("Correct!");
     choice.appendChild(displayText);
@@ -146,24 +144,30 @@ function enterHighScore() {
   }
   submitButton.addEventListener("click", function (event) {
     event.preventDefault();
-    var initials = document.getElementById("userName");
+    var initials = document.getElementById("userName").value;
 
     var latestScore = {
       score: finalScore,
       initials: initials
     }
+    console.log(latestScore);
     highScores.push(latestScore);
     localStorage.setItem("highScores", JSON.stringify(highScores));
   })
 }
 
 function displayHighScores() {
+  titleSection.style.display = "none";
+  introduction.style.display = "none";
+  quizStart.style.display = "none";
+  questionSection.style.display = "none";
   highScoreIndex.style.display = "block";
   var highScores = JSON.parse(localStorage.getItem("highScores"));
   for (i = 0; i < highScores.length; i++) {
     var listEl = document.createElement("li");
     listEl.textContent = highScores[i].initials + " - " + highScores[i].score;
     highScoresList.appendChild(listEl);
+    console.log(highScoresList);
   };
 
 }
@@ -171,7 +175,18 @@ function displayHighScores() {
 //Event Listeners for buttons clicked
 quizStart.addEventListener("click", startQuiz);
 highScoreButton.addEventListener("click", displayHighScores);
-answerButton1.addEventListener("click", checkAnswer(0));
-answerButton2.addEventListener("click", checkAnswer(1));
-answerButton3.addEventListener("click", checkAnswer(2));
-answerButton4.addEventListener("click", checkAnswer(3)); 
+answerButton1.addEventListener("click", function () {
+  checkAnswer(0);
+});
+answerButton2.addEventListener("click", function () {
+  checkAnswer(1);
+});
+answerButton3.addEventListener("click", function () {
+  checkAnswer(2);
+});
+answerButton4.addEventListener("click", function () {
+  checkAnswer(3);
+}); 
+homeButton.addEventListener("click", function () {
+  location.reload()
+});
